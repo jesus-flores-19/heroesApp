@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+.rotated {
+    animation-name: rotation;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.tamaño {
+    font-size: 100px;
+    text-align: center;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
