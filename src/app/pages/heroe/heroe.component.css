@@ -35,3 +35,20 @@
     font-size: 0.8em;
     background-color: rgba(0, 0, 0, 0.08);
 }
+
+.button-dessign-2 {
+    display: inline-flex;
+    justify-content: center;
+    padding: 0;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.button-icon-2,
+.button-text-2 {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 5px;
+}
