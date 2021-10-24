@@ -10,27 +10,27 @@
 </div>
 <div class="row mt-3 justify-content-center">
     <div class="col-6">
-        <form>
+        <form #f="ngForm" (ngSubmit)="obSubmit(f)">
             <div class="row mb-3">
                 <label for="id_Label" class="form-label">Firebase ID</label>
-                <input type="text" class="form-control" id="Id_Label" aria-describedby="id_Help" placeholder="Firebase ID" disabled>
+                <input type="text" class="form-control" id="Id_Label" name="heroe-id" [(ngModel)]="heroe.id" aria-describedby="id_Help" placeholder="Firebase ID" disabled>
                 <div id="id_Help" class="form-text">Este campo es autooperado</div>
             </div>
             <div class="row mb-3">
                 <label for="nombre_Label" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre_Label" placeholder="Firebase ID">
+                <input type="text" class="form-control" id="nombre_Label" name="heroe-nombre" [(ngModel)]="heroe.nombre" placeholder="Nombre">
             </div>
             <div class="row mb-3">
                 <label for="poder_Label" class="form-label">Poder</label>
-                <input type="text" class="form-control" id="poder_Label" placeholder="Firebase ID">
+                <input type="text" class="form-control" id="poder_Label" name="heroe-poder" [(ngModel)]="heroe.poder" placeholder="Poder">
             </div>
             <div class="row mb-5">
-                <label for="botones_Label">Estado</label>
-                <button class="btn btn-outline-success button-dessign-2 w-50" type="button">
+                <label for="botones_Label pb-2">Estado</label>
+                <button class="btn btn-outline-success button-dessign-2 w-50 mt-2" (click)="heroe.vivo = false" *ngIf="heroe.vivo" type="button">
                     <span class="material-icons button-icon-2">face</span>
                     <span class="button-text-2">Vivo</span>
                 </button>
-                <button class="btn btn-outline-danger button-dessign-2 w-50" type="button">
+                <button class="btn btn-outline-danger button-dessign-2 w-50 mt-2" (click)="heroe.vivo = true" *ngIf="!heroe.vivo" type="button">
                     <span class="material-icons button-icon-2">mood_bad</span>
                     <span class="button-text-2">Muerto</span>
                 </button>
