@@ -23,19 +23,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
+                <tr *ngFor="let heroe of Heroes; let i = index">
+                    <td>{{i}}</td>
+                    <td>{{heroe.data.nombre}}</td>
+                    <td>{{heroe.data.poder}}</td>
                     <td>4</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="borrar(heroe.id, i)">Borrar</button>
+                        <button class="btn btn-danger">Modificar</button>
+                    </td>
                 </tr>
             </tbody>
 
