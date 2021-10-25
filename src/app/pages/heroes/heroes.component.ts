@@ -16,8 +16,12 @@ export class HeroesComponent implements OnInit {
       this.Heroes = data
       console.log(this.Heroes);
     });
-
-
+  }
+  borrar(id: string, i: number){
+    this.fireService.eliminarDoc(id)
+    console.log(id);
+    this.Heroes.splice(i,1)
+    
   }
 
   ngOnInit(): void {
