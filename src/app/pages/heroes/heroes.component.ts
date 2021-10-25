@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HeroeModel } from 'src/app/modelos/heroe.modelo';
+import { FirebaseServiceService } from 'src/app/service/firebase-service.service';
 
 @Component({
   selector: 'app-heroes',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroesComponent implements OnInit {
 
-  constructor() { }
+  Heroes: any;
+
+  constructor(public fireService: FirebaseServiceService) { 
+    this.fireService.obtenerHeros().then(data => {
+      this.Heroes = data
+      console.log(this.Heroes);
+    });
+
+
+  }
 
   ngOnInit(): void {
   }
