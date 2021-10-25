@@ -31,7 +31,9 @@ export class FirebaseServiceService {
    async obtenerHeros(){
     const citiesCol = collection(this.db, 'heroes');
     const citySnapshot = await getDocs(citiesCol);
-    const cityList = citySnapshot.docs.map(doc => doc.data());
+    const cityList = citySnapshot.docs.map(doc => {
+      return {data: doc.data(), id: doc.id}
+    });
     return cityList;
    }
 
@@ -46,11 +48,11 @@ export class FirebaseServiceService {
   //   // console.log(doumento);
     
   //  }
-  //  async eliminarDoc(){
-  //   const heroes = collection(this.db, "heroes");
-  //    let documento = doc(heroes, "BS2LBdFY352WjnOy6Tqm")
-  //    await deleteDoc(documento)
-  //  }
+   async eliminarDoc(id: string){
+    const heroes = collection(this.db, "heroes");
+     let documento = doc(heroes, id)
+     await deleteDoc(documento)
+   }
 
    async agregarDato(heroe: any){
      const heroes = collection(this.db, "heroes");
