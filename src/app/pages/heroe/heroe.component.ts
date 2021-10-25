@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HeroeModel } from 'src/app/modelos/heroe.modelo';
+import { FirebaseServiceService } from 'src/app/service/firebase-service.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { HeroeModel } from 'src/app/modelos/heroe.modelo';
 })
 export class HeroeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public fireService: FirebaseServiceService) {
+   }
 
   heroe: HeroeModel = new HeroeModel();
   
@@ -18,8 +20,13 @@ export class HeroeComponent implements OnInit {
   }
 
   obSubmit(formulario: NgForm){
-    console.log(formulario);
-    console.log(this.heroe);
+    if(formulario.invalid) {return}
+    if(this.heroe.id){
+      console.log("actualizar");
+    }else{
+      console.log("que onda");
+      this.fireService.agregarDato(this.heroe).then(doc => this.heroe.id = doc.id);
+    }    
   }
 
 }
