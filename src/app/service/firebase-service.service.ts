@@ -20,22 +20,21 @@ export class FirebaseServiceService {
   };
   
   // Initialize Firebase
-  app: any;
-  db: any;
+  private app: any;
+  private db: any;
 
   constructor() {
    this.app = initializeApp(this.firebaseConfig);
    this.db = getFirestore(this.app);
    }
 
-  //  async obtenerHeros(){
-  //   const citiesCol = collection(this.db, 'heroes');
-  //   const citySnapshot = await getDocs(citiesCol);
-  //   const cityList = citySnapshot.docs.map(doc => doc.data());
-  //   // this.agregarDato()
-  //   return cityList;
-    
-  //  }
+   async obtenerHeros(){
+    const citiesCol = collection(this.db, 'heroes');
+    const citySnapshot = await getDocs(citiesCol);
+    const cityList = citySnapshot.docs.map(doc => doc.data());
+    return cityList;
+   }
+
   //  async updateDoc(){
   //    const heroes = collection(this.db, "heroes");
   //    let doumento = doc(heroes, "BS2LBdFY352WjnOy6Tqm")
