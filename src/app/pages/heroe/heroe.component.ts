@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HeroeModel } from 'src/app/modelos/heroe.modelo';
 import { FirebaseServiceService } from 'src/app/service/firebase-service.service';
+import {ActivatedRoute} from "@angular/router"
 import Swal from 'sweetalert2'
 
 
@@ -12,10 +13,24 @@ import Swal from 'sweetalert2'
 })
 export class HeroeComponent implements OnInit {
 
-  constructor(public fireService: FirebaseServiceService) {
+  heroe: HeroeModel = new HeroeModel();
+
+
+  constructor(public fireService: FirebaseServiceService, public activateRoute: ActivatedRoute) {
+    const rutaActiva = this.activateRoute.snapshot.params.id
+    if(rutaActiva === "nuevo"){
+      console.log("huevos");
+    }else{
+      this.fireService.obtenerDoc(rutaActiva).then((doc: any) =>{
+          const data: any = doc;
+          this.heroe.id = rutaActiva;
+          this.heroe.nombre = data.nombre;
+          this.heroe.vivo = data.vivo;
+          this.heroe.poder = data.poder
+      })
+    }
    }
 
-  heroe: HeroeModel = new HeroeModel();
   
   ngOnInit(): void {
   }
