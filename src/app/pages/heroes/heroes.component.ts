@@ -12,15 +12,18 @@ import Swal from "sweetalert2"
 export class HeroesComponent implements OnInit {
 
   Heroes: any;
+  cargando: boolean;
 
   constructor(public fireService: FirebaseServiceService, private router: Router) { 
+    this.cargando = true;    
     this.fireService.obtenerHeros().then(data => {
       this.Heroes = data
       console.log(this.Heroes);
+      this.cargando = false;
     });
+
   }
   borrar(heroe: any, i: number){
-
     Swal.fire({
       title: "¿Estas seguro?",
       text: `Estas seguro que desea borrar a ${heroe.data.nombre}`,
