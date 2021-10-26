@@ -37,17 +37,18 @@ export class FirebaseServiceService {
     return cityList;
    }
 
-  //  async updateDoc(){
-  //    const heroes = collection(this.db, "heroes");
-  //    let doumento = doc(heroes, "BS2LBdFY352WjnOy6Tqm")
-  //    const heroe= {
-  //     nombre: "Jesus",
-  //     poder: "venosos"
-  //   }
-  //    await updateDoc(doumento,heroe)
-  //   // console.log(doumento);
+   async updateDoc(heroe: any){
+     const heroes = collection(this.db, "heroes");
+     let doumento = doc(heroes, heroe.id)
+     const heroe_2= {
+      nombre: heroe.nombre,
+      poder: heroe.poder,
+      vivo: heroe.vivo
+    }
+     await updateDoc(doumento,heroe_2)
+    // console.log(doumento);
     
-  //  }
+   }
    async eliminarDoc(id: string){
     const heroes = collection(this.db, "heroes");
      let documento = doc(heroes, id)
