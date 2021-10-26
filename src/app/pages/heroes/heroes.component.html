@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row mt-4 justify-content-center">
-    <div class="col-10">
+    <div class="col-10" *ngIf="!cargando && Heroes?.length !== 0">
         <table class="table table-striped rounded shadow-sm">
             <thead class="table-dark">
                 <tr>
@@ -42,11 +42,11 @@
     </div>
 </div>
 <div class=" row justify-content-center ">
-    <div class="alert alert-danger text-center w-75 ">
+    <div *ngIf="!cargando && Heroes?.length === 0" class="alert alert-danger text-center w-75 ">
         <h4>No hay registros</h4>
         <span class="material-icons h1 ">error</span>
     </div>
-    <div class="alert alert-primary text-center w-75 ">
+    <div *ngIf="cargando" class="alert alert-primary text-center w-75 ">
         <h4>Cargando</h4>
         <span class="material-icons h1 rotated ">sync</span>
     </div>
