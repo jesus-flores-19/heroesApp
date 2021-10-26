@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { firestore } from 'firebase-admin';
 import { initializeApp, } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, setDoc, DocumentReference, deleteDoc} from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, setDoc,DocumentReference, deleteDoc, getDoc} from 'firebase/firestore/lite';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,8 @@ export class FirebaseServiceService {
    this.db = getFirestore(this.app);
    }
 
+   /////////////////////////////////////////////////////////////////////////////////////////////////
+   
    async obtenerHeros(){
     const citiesCol = collection(this.db, 'heroes');
     const citySnapshot = await getDocs(citiesCol);
@@ -36,6 +38,8 @@ export class FirebaseServiceService {
     });
     return cityList;
    }
+
+   /////////////////////////////////////////////////////////////////////////////////////////////////
 
    async updateDoc(heroe: any){
      const heroes = collection(this.db, "heroes");
@@ -46,14 +50,27 @@ export class FirebaseServiceService {
       vivo: heroe.vivo
     }
      await updateDoc(doumento,heroe_2)
-    // console.log(doumento);
-    
+    // console.log(doumento); 
    }
+
+   //////////////////////////////////////////////////////////////////////////////////////////////////
+
    async eliminarDoc(id: string){
     const heroes = collection(this.db, "heroes");
      let documento = doc(heroes, id)
      await deleteDoc(documento)
    }
+
+   /////////////////////////////////////////////////////////////////////////////////////////////////
+
+   async obtenerDoc(id: string){
+     const heroes = collection(this.db, "heroes");
+     let documento = doc(heroes, id);
+     const docSnapshot = await getDoc(documento) 
+     return docSnapshot.data()
+   }
+
+   /////////////////////////////////////////////////////////////////////////////////////////////////
 
    async agregarDato(heroe: any){
      const heroes = collection(this.db, "heroes");
