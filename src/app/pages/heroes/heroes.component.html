@@ -24,10 +24,13 @@
             </thead>
             <tbody>
                 <tr *ngFor="let heroe of Heroes; let i = index">
-                    <td>{{i}}</td>
+                    <td>{{i+1}}</td>
                     <td>{{heroe.data.nombre}}</td>
                     <td>{{heroe.data.poder}}</td>
-                    <td>4</td>
+                    <td>
+                        <div *ngIf="heroe.data.vivo" class="badge bg-success">Vivo</div>
+                        <div *ngIf="!heroe.data.vivo" class="badge bg-danger">Muerto</div>
+                    </td>
                     <td>
                         <button class="btn btn-danger" (click)="borrar(heroe.id, i)">Borrar</button>
                         <button class="btn btn-secondary ms-2" (click)="modificar(heroe.id)">Modificar</button>
