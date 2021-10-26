@@ -30,7 +30,7 @@
                     <td>4</td>
                     <td>
                         <button class="btn btn-danger" (click)="borrar(heroe.id, i)">Borrar</button>
-                        <button class="btn btn-danger">Modificar</button>
+                        <button class="btn btn-secondary ms-2" (click)="modificar(heroe.id)">Modificar</button>
                     </td>
                 </tr>
             </tbody>
@@ -38,13 +38,13 @@
         </table>
     </div>
 </div>
-<div class="row justify-content-center ">
-    <div class="alert alert-danger text-center w-75">
+<div class=" row justify-content-center ">
+    <div class="alert alert-danger text-center w-75 ">
         <h4>No hay registros</h4>
-        <span class="material-icons h1">error</span>
+        <span class="material-icons h1 ">error</span>
     </div>
-    <div class="alert alert-primary text-center w-75">
+    <div class="alert alert-primary text-center w-75 ">
         <h4>Cargando</h4>
-        <span class="material-icons h1 rotated">sync</span>
+        <span class="material-icons h1 rotated ">sync</span>
     </div>
 </div>
