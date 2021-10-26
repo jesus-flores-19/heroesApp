@@ -31,11 +31,25 @@ export class HeroeComponent implements OnInit {
     Swal.showLoading();
 
     if(this.heroe.id){
-      console.log("actualizar");
-      Swal.close();
+      this.fireService.updateDoc(this.heroe)
+                .then( ()=> {
+                  Swal.close() 
+                  Swal.fire({
+                    title: "Heroe Actualizado",
+                    timer: 2000,
+                    icon: "success"
+                  })
+                });
     }else{
-      console.log("que onda");
-      this.fireService.agregarDato(this.heroe).then(doc => this.heroe.id = doc.id).then( ()=> Swal.close() );
+      this.fireService.agregarDato(this.heroe).then(doc => this.heroe.id = doc.id)
+                .then( ()=> {
+                  Swal.close() 
+                  Swal.fire({
+                    title: "Heroe agregado",
+                    timer: 2000,
+                    icon: "success"
+                  })
+                });
     }    
   }
 
