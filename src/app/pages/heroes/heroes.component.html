@@ -32,7 +32,7 @@
                         <div *ngIf="!heroe.data.vivo" class="badge bg-danger">Muerto</div>
                     </td>
                     <td>
-                        <button class="btn btn-danger" (click)="borrar(heroe.id, i)">Borrar</button>
+                        <button class="btn btn-danger" (click)="borrar(heroe, i)">Borrar</button>
                         <button class="btn btn-secondary ms-2" (click)="modificar(heroe.id)">Modificar</button>
                     </td>
                 </tr>
